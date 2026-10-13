@@ -34,6 +34,21 @@ body{font-family:"Manrope",system-ui,sans-serif;color:var(--crema);background:va
 .eti{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);padding:8px 14px;border:1px solid rgba(212,180,122,.3);border-radius:999px;background:rgba(212,180,122,.06)}
 .eti::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--oro)}
 
+/* Capa premium */
+body::after{content:"";position:fixed;inset:-50%;z-index:9998;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grano 1s steps(4) infinite}
+@keyframes grano{25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-2%)}}
+#intro{position:fixed;inset:0;z-index:100000;background:var(--fondo);display:grid;place-items:center;transition:opacity .9s ease,visibility .9s}
+#intro.fuera{opacity:0;visibility:hidden}
+#intro .logo{font-family:"Instrument Serif",serif;font-size:clamp(2.4rem,6vw,4rem);color:var(--crema);text-align:center}
+#intro .logo em{color:var(--oro)}
+#intro .linea-oro{width:160px;height:1px;background:rgba(212,180,122,.2);margin:22px auto 0;overflow:hidden}
+#intro .linea-oro i{display:block;height:100%;background:var(--oro);transform-origin:left;transform:scaleX(0);animation:cargar 1.3s ease forwards}
+@keyframes cargar{to{transform:scaleX(1)}}
+#progreso{position:fixed;top:0;left:0;width:100%;height:2px;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#9C7C3C,var(--oro2),var(--oro));z-index:10000}
+#cursor{position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid rgba(212,180,122,.75);border-radius:50%;pointer-events:none;z-index:100001;transition:width .3s,height .3s,margin .3s,background .3s;display:none}
+#cursor.activo{display:block}
+#cursor.grande{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(212,180,122,.12)}
+
 .n8n-chat,.chat-layout{font-family:"Manrope",system-ui,sans-serif}
 .chat-header h1{font-family:"Instrument Serif",serif;font-weight:400}
 .chat-header p{color:var(--oro2)}
@@ -66,11 +81,12 @@ nav a:hover,nav a:focus-visible{background:var(--vidrio)}
   linear-gradient(90deg,rgba(6,11,22,.85) 0%,rgba(6,11,22,.2) 70%),
   url('portada.jpg') center/cover no-repeat,var(--azul)}
 .hero .wrap{width:100%;display:grid;grid-template-columns:1.4fr .8fr;gap:40px;align-items:end}
-.hero h1{font-size:clamp(4rem,11vw,9.5rem);line-height:.92;letter-spacing:-.02em;margin:26px 0 22px}
+.hero h1{font-size:clamp(4rem,11vw,9.5rem);line-height:.92;letter-spacing:-.02em;margin:26px 0 22px;animation:revelar 1.6s cubic-bezier(.2,.7,.2,1) 1.2s both}
+@keyframes revelar{from{clip-path:inset(0 0 100% 0);transform:translateY(40px)}to{clip-path:inset(0 0 0 0);transform:none}}
 .hero h1 em{color:var(--oro);font-style:italic}
 .hero p{font-size:1.1rem;color:#C9D0DB;max-width:42ch;margin-bottom:34px}
 .botones{display:flex;gap:12px;flex-wrap:wrap}
-.tarjeta{border:1px solid var(--linea);border-radius:24px;padding:26px;background:rgba(6,11,22,.5);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.tarjeta{position:relative;border:1px solid var(--linea);border-radius:24px;padding:26px;background:rgba(6,11,22,.5);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 .tarjeta .k{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro)}
 .tarjeta h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:2rem;line-height:1.1;margin:10px 0 8px}
 .tarjeta p{font-size:.9rem;color:var(--gris);margin:0 0 18px}
@@ -90,7 +106,7 @@ section{padding:120px 0}
 .titulo p{max-width:40ch;color:var(--gris)}
 
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.caja{border:1px solid var(--linea);border-radius:28px;padding:34px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));min-height:260px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .4s,transform .4s;overflow:hidden}
+.caja{position:relative;border:1px solid var(--linea);border-radius:28px;padding:34px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));min-height:260px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .4s,transform .4s;overflow:hidden}
 .caja:hover{border-color:rgba(212,180,122,.5);transform:translateY(-4px)}
 .caja .num{font-size:.8rem;color:var(--oro);letter-spacing:.2em}
 .caja h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:2.2rem;margin:40px 0 10px}
@@ -102,7 +118,7 @@ section{padding:120px 0}
 
 .carta{background:var(--fondo2)}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.panel{border:1px solid var(--linea);border-radius:28px;padding:36px;background:rgba(255,255,255,.03)}
+.panel{position:relative;border:1px solid var(--linea);border-radius:28px;padding:36px;background:rgba(255,255,255,.03)}
 .panel h3{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);font-weight:500;margin-bottom:12px}
 .panel h3.otro{margin-top:32px}
 .plato{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--linea)}
@@ -111,6 +127,9 @@ section{padding:120px 0}
 .plato .nom small{display:block;font-family:"Manrope",sans-serif;font-size:.8rem;color:var(--gris)}
 .plato .pre{font-size:.9rem;font-weight:500;color:var(--oro2);border:1px solid rgba(212,180,122,.3);border-radius:999px;padding:5px 14px;white-space:nowrap}
 .nota{color:var(--gris);margin-top:22px;font-size:.88rem;text-align:center}
+
+.caja::after,.panel::after,.tarjeta::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(380px circle at var(--x,50%) var(--y,50%),rgba(212,180,122,.16),transparent 60%)}
+.caja:hover::after,.panel:hover::after,.tarjeta:hover::after{opacity:1}
 
 .amelie .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .amelie h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(2.8rem,5.5vw,4.6rem);line-height:1;margin:18px 0 20px}
@@ -159,10 +178,15 @@ footer p{color:var(--gris);font-size:.84rem}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rev{opacity:1;transform:none}html{scroll-behavior:auto}
+  body::after,#intro{display:none}
 }
 </style>
 </head>
 <body>
+
+<div id="intro" aria-hidden="true"><div><div class="logo">Café <em>Aroma</em></div><div class="linea-oro"><i></i></div></div></div>
+<div id="progreso" aria-hidden="true"></div>
+<div id="cursor" aria-hidden="true"></div>
 
 <header>
   <div class="wrap">
@@ -313,6 +337,51 @@ footer p{color:var(--gris);font-size:.84rem}
   <span class="txt">Pregúntale a Amélie<small>Responde al instante</small></span>
 </button>
 
+<script>
+  // Capa premium: entrada, progreso, reflejo dorado y cursor
+  (() => {
+    const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const intro = document.getElementById('intro');
+    const ocultar = () => intro.classList.add('fuera');
+    addEventListener('load', () => setTimeout(ocultar, quieto ? 0 : 1300));
+    setTimeout(ocultar, 4000);
+
+    const barra = document.getElementById('progreso');
+    addEventListener('scroll', () => {
+      const h = document.documentElement;
+      barra.style.transform = 'scaleX(' + (h.scrollTop / (h.scrollHeight - h.clientHeight) || 0) + ')';
+    }, { passive: true });
+
+    document.querySelectorAll('.caja,.panel,.tarjeta').forEach(el =>
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--x', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--y', (e.clientY - r.top) + 'px');
+      }));
+
+    if (matchMedia('(pointer:fine)').matches && !quieto) {
+      const c = document.getElementById('cursor');
+      c.classList.add('activo');
+      let x = 0, y = 0, cx = 0, cy = 0;
+      addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; });
+      (function mover(){
+        cx += (x - cx) * .18; cy += (y - cy) * .18;
+        c.style.transform = `translate(${cx}px, ${cy}px)`;
+        requestAnimationFrame(mover);
+      })();
+      document.querySelectorAll('a,button').forEach(b => {
+        b.addEventListener('pointerenter', () => c.classList.add('grande'));
+        b.addEventListener('pointerleave', () => c.classList.remove('grande'));
+      });
+    }
+
+    const obs = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('ver'); obs.unobserve(e.target); }
+    }), { threshold: .12 });
+    document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+  })();
+</script>
+
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat@0.27.1/dist/chat.bundle.es.js';
 
@@ -354,11 +423,6 @@ footer p{color:var(--gris);font-size:.84rem}
   document.querySelector('.lanzador').addEventListener('click', alternar);
   document.querySelectorAll('[data-pregunta]').forEach(b =>
     b.addEventListener('click', () => preguntar(b.dataset.pregunta)));
-
-  const obs = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('ver'); obs.unobserve(e.target); }
-  }), { threshold: .12 });
-  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
