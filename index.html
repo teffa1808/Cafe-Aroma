@@ -42,7 +42,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:9998;pointer-events:non
 #intro .logo{font-family:"Instrument Serif",serif;font-size:clamp(2.4rem,6vw,4rem);color:var(--crema);text-align:center}
 #intro .logo em{color:var(--oro)}
 #intro .linea-oro{width:160px;height:1px;background:rgba(212,180,122,.2);margin:22px auto 0;overflow:hidden}
-#intro .linea-oro i{display:block;height:100%;background:var(--oro);transform-origin:left;transform:scaleX(0);animation:cargar 1.3s ease forwards}
+#intro .linea-oro i{display:block;height:100%;background:var(--oro);transform-origin:left;transform:scaleX(0);animation:cargar 1.5s ease forwards}
 @keyframes cargar{to{transform:scaleX(1)}}
 #progreso{position:fixed;top:0;left:0;width:100%;height:2px;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#9C7C3C,var(--oro2),var(--oro));z-index:10000}
 #cursor{position:fixed;top:0;left:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid rgba(212,180,122,.75);border-radius:50%;pointer-events:none;z-index:100001;transition:width .3s,height .3s,margin .3s,background .3s;display:none}
@@ -81,7 +81,7 @@ nav a:hover,nav a:focus-visible{background:var(--vidrio)}
   linear-gradient(90deg,rgba(6,11,22,.85) 0%,rgba(6,11,22,.2) 70%),
   url('portada.jpg') center/cover no-repeat,var(--azul)}
 .hero .wrap{width:100%;display:grid;grid-template-columns:1.4fr .8fr;gap:40px;align-items:end}
-.hero h1{font-size:clamp(4rem,11vw,9.5rem);line-height:.92;letter-spacing:-.02em;margin:26px 0 22px;animation:revelar 1.6s cubic-bezier(.2,.7,.2,1) 1.2s both}
+.hero h1{font-size:clamp(4rem,11vw,9.5rem);line-height:.92;letter-spacing:-.02em;margin:26px 0 22px;animation:revelar 1.6s cubic-bezier(.2,.7,.2,1) 1.4s both}
 @keyframes revelar{from{clip-path:inset(0 0 100% 0);transform:translateY(40px)}to{clip-path:inset(0 0 0 0);transform:none}}
 .hero h1 em{color:var(--oro);font-style:italic}
 .hero p{font-size:1.1rem;color:#C9D0DB;max-width:42ch;margin-bottom:34px}
@@ -338,13 +338,12 @@ footer p{color:var(--gris);font-size:.84rem}
 </button>
 
 <script>
-  // Capa premium: entrada, progreso, reflejo dorado y cursor
   (() => {
     const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const intro = document.getElementById('intro');
     const ocultar = () => intro.classList.add('fuera');
-    addEventListener('load', () => setTimeout(ocultar, quieto ? 0 : 1300));
-    setTimeout(ocultar, 4000);
+    addEventListener('load', () => setTimeout(ocultar, quieto ? 0 : 1500));
+    setTimeout(ocultar, 4500);
 
     const barra = document.getElementById('progreso');
     addEventListener('scroll', () => {
