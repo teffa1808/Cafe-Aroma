@@ -6,256 +6,312 @@
 <title>Café Aroma | Maison de Café & Pâtisserie</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat@0.27.1/dist/style.css" rel="stylesheet">
 <style>
-  :root{
-    --noche:#0B1729; --noche2:#122340; --noche3:#1A2F52;
-    --oro:#C9A961; --oro2:#E8D4A0; --oro3:#9C7C3C;
-    --marfil:#F6F0E4; --gris:#AEB7C6;
-    --chat--color-primary: var(--oro);
-    --chat--color-primary-shade-50: var(--oro3);
-    --chat--color-primary-shade-100: #86692F;
-    --chat--color-secondary: var(--noche3);
-    --chat--color-secondary-shade-50: var(--noche2);
-    --chat--color-white: #FFFFFF;
-    --chat--color-light: #F8F3E9;
-    --chat--color-dark: var(--noche);
-    --chat--window--width: 420px;
-    --chat--window--height: 620px;
-    --chat--border-radius: 18px;
-    --chat--header--background: linear-gradient(135deg,#0B1729,#1A2F52);
-    --chat--header--color: var(--marfil);
-    --chat--header--padding: 22px 24px;
-    --chat--heading--font-size: 1.7em;
-    --chat--subtitle--font-size: .95em;
-    --chat--subtitle--line-height: 1.4;
-    --chat--message--font-size: 0.98rem;
-    --chat--message--padding: 12px 16px;
-    --chat--message--border-radius: 16px;
-    --chat--message--bot--background: #FFFFFF;
-    --chat--message--bot--color: var(--noche);
-    --chat--message--bot--border: 1px solid rgba(201,169,97,.35);
-    --chat--message--user--background: var(--noche2);
-    --chat--message--user--color: var(--marfil);
-    --chat--toggle--size: 64px;
-    --chat--toggle--background: var(--oro);
-    --chat--toggle--hover--background: var(--oro2);
-    --chat--toggle--active--background: var(--oro3);
-    --chat--toggle--color: var(--noche);
-    --chat--input--border: 1px solid rgba(201,169,97,.45);
-    --chat--input--send--button--color: var(--oro3);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:"Jost",system-ui,sans-serif;font-weight:300;color:var(--marfil);background:var(--noche);line-height:1.75}
-  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;line-height:1.08}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-  .script{font-family:"Pinyon Script",cursive;color:var(--oro);font-weight:400}
-  .dorado{background:linear-gradient(100deg,var(--oro3) 0%,var(--oro2) 35%,var(--oro) 55%,var(--oro2) 75%,var(--oro3) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent}
-  .n8n-chat,.chat-layout{font-family:"Jost",system-ui,sans-serif}
-  .chat-header h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;font-style:italic;letter-spacing:.03em}
-  .chat-header p{color:var(--oro2)}
-  .orn{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--oro);margin:0 auto}
-  .orn::before,.orn::after{content:"";width:90px;height:1px;background:linear-gradient(90deg,transparent,var(--oro))}
-  .orn::after{background:linear-gradient(90deg,var(--oro),transparent)}
-  .orn svg{width:46px;height:14px}
-  header{position:absolute;top:0;left:0;right:0;z-index:5;padding:42px 0}
-  header .wrap{display:flex;justify-content:space-between;align-items:center}
-  .marca{display:flex;align-items:center;gap:14px;font-family:"Cormorant Garamond",serif;font-size:1.35rem;letter-spacing:.18em}
-  .mono{width:48px;height:48px;border:1px solid var(--oro);border-radius:50%;display:grid;place-items:center;font-family:"Pinyon Script",cursive;color:var(--oro);font-size:1.5rem;outline:1px solid rgba(201,169,97,.35);outline-offset:3px}
-  nav a{color:var(--marfil);text-decoration:none;margin-left:38px;font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-style:italic;letter-spacing:.04em}
-  nav a:hover,nav a:focus-visible{color:var(--oro)}
-  .hero{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
-    background:radial-gradient(ellipse at 50% 40%,rgba(42,72,120,.55) 0%,transparent 60%),
-      repeating-linear-gradient(45deg,rgba(201,169,97,.035) 0 1px,transparent 1px 34px),
-      repeating-linear-gradient(-45deg,rgba(201,169,97,.035) 0 1px,transparent 1px 34px),var(--noche)}
-  .marco{position:absolute;inset:26px;border:1px solid rgba(201,169,97,.45);pointer-events:none}
-  .marco::before{content:"";position:absolute;inset:7px;border:1px solid rgba(201,169,97,.2)}
-  .esq{position:absolute;width:38px;height:38px;color:var(--oro)}
-  .esq.a{top:-1px;left:-1px}.esq.b{top:-1px;right:-1px;transform:scaleX(-1)}
-  .esq.c{bottom:-1px;left:-1px;transform:scaleY(-1)}.esq.d{bottom:-1px;right:-1px;transform:scale(-1)}
-  .hero .contenido{position:relative;max-width:800px;padding:140px 28px 90px}
-  .hero .script{font-size:clamp(2.4rem,5vw,3.4rem);display:block;margin-bottom:-6px}
-  .hero h1{font-size:clamp(3.4rem,9vw,7rem);letter-spacing:.04em}
-  .hero .sub{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.35rem;color:var(--oro2);letter-spacing:.1em;margin:14px 0 30px}
-  .hero p{color:var(--gris);font-size:1.08rem;max-width:44ch;margin:26px auto 42px}
-  .btn{display:inline-block;background:transparent;color:var(--oro2);border:1px solid var(--oro);padding:16px 36px;font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-style:italic;letter-spacing:.06em;cursor:pointer;position:relative;transition:background .4s,color .4s}
-  .btn::after{content:"";position:absolute;inset:4px;border:1px solid rgba(201,169,97,.3);pointer-events:none}
-  .btn:hover{background:var(--oro);color:var(--noche)}
-  .btn.lleno{background:var(--oro);color:var(--noche)}
-  .btn.lleno:hover{background:var(--oro2)}
-  .btn:focus-visible,nav a:focus-visible{outline:2px solid var(--oro2);outline-offset:5px}
-  .desde{margin-top:46px;font-size:.8rem;letter-spacing:.35em;color:var(--oro)}
-  .maison{background:var(--marfil);color:var(--noche);padding:120px 0;text-align:center}
-  .maison .script{font-size:3rem;color:var(--oro3)}
-  .maison h2{font-size:clamp(2.3rem,4vw,3.3rem);margin:0 0 20px}
-  .maison > .wrap > p{max-width:60ch;margin:0 auto 70px;color:#3C475A;font-size:1.08rem}
-  .arcos{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-  .arco{border:1px solid var(--oro);border-radius:180px 180px 0 0;padding:70px 30px 44px;position:relative;background:#FBF7EF}
-  .arco::before{content:"";position:absolute;inset:7px;border:1px solid rgba(156,124,60,.35);border-radius:174px 174px 0 0;pointer-events:none}
-  .arco .num{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.6rem;color:var(--oro3)}
-  .arco h3{font-size:1.8rem;font-style:italic;margin:6px 0 12px}
-  .arco p{color:#4A5568;font-size:.98rem}
-  .carta{padding:120px 0;background:repeating-linear-gradient(45deg,rgba(201,169,97,.025) 0 1px,transparent 1px 34px),var(--noche)}
-  .carta .titulo{text-align:center;margin-bottom:64px}
-  .carta .script{font-size:3rem}
-  .carta h2{font-size:clamp(2.6rem,5vw,3.8rem);margin-bottom:18px}
-  .carta .titulo p{color:var(--gris);margin-top:16px;font-style:italic;font-family:"Cormorant Garamond",serif;font-size:1.15rem}
-  .menu{max-width:940px;margin:0 auto;border:1px solid rgba(201,169,97,.5);padding:8px}
-  .menu-in{border:1px solid rgba(201,169,97,.22);padding:56px 56px 40px;display:grid;grid-template-columns:1fr 1fr;gap:20px 60px;background:rgba(18,35,64,.6)}
-  .menu h3{font-size:1.7rem;font-style:italic;color:var(--oro2);text-align:center;margin-bottom:18px}
-  .menu h3.otro{margin-top:30px}
-  .plato{display:flex;align-items:baseline;gap:10px;padding:9px 0}
-  .plato .nom{font-family:"Cormorant Garamond",serif;font-size:1.25rem}
-  .plato .nom small{display:block;font-family:"Jost",sans-serif;font-size:.8rem;color:var(--gris);letter-spacing:.04em}
-  .plato i{flex:1;border-bottom:1px dotted rgba(201,169,97,.5);transform:translateY(-6px)}
-  .plato .pre{font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:var(--oro)}
-  .nota{text-align:center;color:var(--gris);margin-top:30px;font-size:.92rem;font-style:italic}
-  .visita{padding:120px 0;background:linear-gradient(180deg,var(--noche2),var(--noche))}
-  .visita .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-  .visita .script{font-size:2.8rem}
-  .visita h2{font-size:clamp(2.3rem,4vw,3.2rem);margin-bottom:30px}
-  .datos{display:grid;grid-template-columns:auto 1fr;gap:16px 34px}
-  .datos dt{color:var(--oro);font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-style:italic}
-  .asistente{border:1px solid var(--oro);padding:8px}
-  .asistente-in{border:1px solid rgba(201,169,97,.3);padding:48px 36px;text-align:center;background:rgba(11,23,41,.5)}
-  .asistente h3{font-size:2.1rem;font-style:italic;margin:14px 0}
-  .asistente p{color:var(--gris);margin-bottom:22px}
-  .ejemplos{list-style:none;margin:0 0 30px;display:grid;gap:8px}
-  .ejemplos li{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.1rem;color:var(--oro2)}
-  footer{text-align:center;padding:60px 0 50px;border-top:1px solid rgba(201,169,97,.2)}
-  footer .mono{margin:0 auto 22px}
-  .disenado{font-size:.78rem;letter-spacing:.3em;color:var(--oro)}
-  .firma{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:500;font-size:2rem;color:var(--oro2);letter-spacing:.04em;margin:6px 0 10px}
-  footer p{color:var(--gris);font-size:.85rem;letter-spacing:.05em}
-  @media (max-width:860px){
-    nav{display:none}
-    .arcos,.menu-in,.visita .wrap{grid-template-columns:1fr}
-    .menu-in{padding:40px 24px}
-    .marco{inset:12px}
-  }
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+:root{
+  --fondo:#060B16;--fondo2:#0B1424;--azul:#13233D;
+  --oro:#D4B47A;--oro2:#EEDDB5;--crema:#F5F0E6;--gris:#8E99AB;
+  --vidrio:rgba(255,255,255,.05);--linea:rgba(255,255,255,.1);
+  --chat--color-primary:var(--oro);--chat--color-primary-shade-50:#BE9C5E;--chat--color-primary-shade-100:#A6864A;
+  --chat--color-secondary:var(--azul);--chat--color-secondary-shade-50:var(--fondo2);
+  --chat--color-white:#FFFFFF;--chat--color-light:#F6F2EA;--chat--color-dark:var(--fondo);
+  --chat--window--width:400px;--chat--window--height:600px;--chat--border-radius:24px;
+  --chat--window--bottom:100px;
+  --chat--header--background:var(--fondo);--chat--header--color:var(--crema);--chat--header--padding:20px 22px;
+  --chat--heading--font-size:1.5em;--chat--subtitle--font-size:.85em;
+  --chat--message--font-size:.95rem;--chat--message--padding:12px 16px;--chat--message--border-radius:18px;
+  --chat--message--bot--background:#FFFFFF;--chat--message--bot--color:var(--fondo);
+  --chat--message--bot--border:1px solid rgba(212,180,122,.3);
+  --chat--message--user--background:var(--azul);--chat--message--user--color:var(--crema);
+  --chat--input--border:1px solid rgba(212,180,122,.4);--chat--input--send--button--color:#A6864A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Manrope",system-ui,sans-serif;color:var(--crema);background:var(--fondo);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.eti{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);padding:8px 14px;border:1px solid rgba(212,180,122,.3);border-radius:999px;background:rgba(212,180,122,.06)}
+.eti::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--oro)}
+
+.n8n-chat,.chat-layout{font-family:"Manrope",system-ui,sans-serif}
+.chat-header h1{font-family:"Instrument Serif",serif;font-weight:400}
+.chat-header p{color:var(--oro2)}
+.chat-window-toggle{opacity:0!important;pointer-events:none!important}
+
+.lanzador{position:fixed;right:20px;bottom:20px;z-index:9999;display:flex;align-items:center;gap:12px;padding:8px 22px 8px 8px;border:1px solid rgba(212,180,122,.45);border-radius:999px;background:rgba(6,11,22,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:var(--crema);font-family:"Manrope",sans-serif;font-size:.92rem;font-weight:500;cursor:pointer;text-align:left;animation:aura 3s infinite;transition:transform .3s}
+.lanzador:hover{transform:translateY(-3px)}
+.lanzador .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--oro2),var(--oro));color:var(--fondo);font-family:"Instrument Serif",serif;font-size:1.4rem;position:relative;flex-shrink:0}
+.lanzador .av::after{content:"";position:absolute;right:0;bottom:1px;width:11px;height:11px;border-radius:50%;background:#4ADE80;border:2px solid var(--fondo)}
+.lanzador small{display:block;font-size:.72rem;color:var(--gris);font-weight:400}
+@keyframes aura{0%{box-shadow:0 0 0 0 rgba(212,180,122,.35)}70%{box-shadow:0 0 0 14px rgba(212,180,122,0)}100%{box-shadow:0 0 0 0 rgba(212,180,122,0)}}
+
+header{position:fixed;top:16px;left:0;right:0;z-index:50}
+.barra{display:flex;justify-content:space-between;align-items:center;padding:10px 12px 10px 22px;border:1px solid var(--linea);border-radius:999px;background:rgba(6,11,22,.45);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.marca{font-family:"Instrument Serif",serif;font-size:1.5rem}
+.marca span{color:var(--oro);font-style:italic}
+nav{display:flex;gap:6px}
+nav a{color:var(--crema);text-decoration:none;font-size:.85rem;padding:10px 16px;border-radius:999px;transition:background .3s}
+nav a:hover,nav a:focus-visible{background:var(--vidrio)}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;border:1px solid transparent;font-family:"Manrope",sans-serif;font-size:.92rem;font-weight:500;cursor:pointer;text-decoration:none;transition:transform .3s,background .3s}
+.pill:hover{transform:translateY(-2px)}
+.pill.oro{background:var(--oro);color:var(--fondo)}
+.pill.oro:hover{background:var(--oro2)}
+.pill.vid{background:var(--vidrio);border-color:var(--linea);color:var(--crema);backdrop-filter:blur(10px)}
+.pill.chica{padding:10px 18px;font-size:.85rem}
+.pill:focus-visible,nav a:focus-visible,.chip:focus-visible,.lanzador:focus-visible{outline:2px solid var(--oro2);outline-offset:3px}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding:140px 0 70px;
+  background:linear-gradient(180deg,rgba(6,11,22,.35) 0%,rgba(6,11,22,.55) 45%,var(--fondo) 100%),
+  linear-gradient(90deg,rgba(6,11,22,.85) 0%,rgba(6,11,22,.2) 70%),
+  url('portada.jpg') center/cover no-repeat,var(--azul)}
+.hero .wrap{width:100%;display:grid;grid-template-columns:1.4fr .8fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(4rem,11vw,9.5rem);line-height:.92;letter-spacing:-.02em;margin:26px 0 22px}
+.hero h1 em{color:var(--oro);font-style:italic}
+.hero p{font-size:1.1rem;color:#C9D0DB;max-width:42ch;margin-bottom:34px}
+.botones{display:flex;gap:12px;flex-wrap:wrap}
+.tarjeta{border:1px solid var(--linea);border-radius:24px;padding:26px;background:rgba(6,11,22,.5);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.tarjeta .k{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--oro)}
+.tarjeta h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:2rem;line-height:1.1;margin:10px 0 8px}
+.tarjeta p{font-size:.9rem;color:var(--gris);margin:0 0 18px}
+.tarjeta .fila{display:flex;justify-content:space-between;align-items:center}
+.tarjeta .precio{font-family:"Instrument Serif",serif;font-size:1.8rem;color:var(--oro2)}
+
+.franja{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);overflow:hidden;padding:22px 0}
+.pista{display:flex;gap:46px;width:max-content;animation:correr 40s linear infinite}
+.pista span{font-family:"Instrument Serif",serif;font-size:1.9rem;font-style:italic;white-space:nowrap}
+.pista span:nth-child(even){color:var(--oro);font-style:normal;font-size:1.2rem;align-self:center}
+@keyframes correr{to{transform:translateX(-50%)}}
+
+section{padding:120px 0}
+.titulo{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:56px;flex-wrap:wrap}
+.titulo h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(2.8rem,6vw,5rem);line-height:1;margin-top:18px}
+.titulo h2 em{color:var(--oro)}
+.titulo p{max-width:40ch;color:var(--gris)}
+
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.caja{border:1px solid var(--linea);border-radius:28px;padding:34px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));min-height:260px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .4s,transform .4s;overflow:hidden}
+.caja:hover{border-color:rgba(212,180,122,.5);transform:translateY(-4px)}
+.caja .num{font-size:.8rem;color:var(--oro);letter-spacing:.2em}
+.caja h3{font-family:"Instrument Serif",serif;font-weight:400;font-size:2.2rem;margin:40px 0 10px}
+.caja p{color:#C9D0DB;font-size:.95rem}
+.caja.grande{grid-column:span 2;background:radial-gradient(circle at 85% 20%,rgba(212,180,122,.18),transparent 55%),linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
+.caja.grande h3{font-size:clamp(2.4rem,4vw,3.4rem)}
+.caja.foto1{min-height:440px;background:linear-gradient(0deg,rgba(6,11,22,.92) 10%,rgba(6,11,22,.15) 70%),url('maison.jpg') center/cover}
+.caja.foto3{min-height:440px;background:linear-gradient(0deg,rgba(6,11,22,.92) 15%,rgba(6,11,22,.1) 70%),url('cafe.jpg') center/cover}
+
+.carta{background:var(--fondo2)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{border:1px solid var(--linea);border-radius:28px;padding:36px;background:rgba(255,255,255,.03)}
+.panel h3{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);font-weight:500;margin-bottom:12px}
+.panel h3.otro{margin-top:32px}
+.plato{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--linea)}
+.plato:last-child{border-bottom:0}
+.plato .nom{font-family:"Instrument Serif",serif;font-size:1.45rem;line-height:1.2}
+.plato .nom small{display:block;font-family:"Manrope",sans-serif;font-size:.8rem;color:var(--gris)}
+.plato .pre{font-size:.9rem;font-weight:500;color:var(--oro2);border:1px solid rgba(212,180,122,.3);border-radius:999px;padding:5px 14px;white-space:nowrap}
+.nota{color:var(--gris);margin-top:22px;font-size:.88rem;text-align:center}
+
+.amelie .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.amelie h2{font-family:"Instrument Serif",serif;font-weight:400;font-size:clamp(2.8rem,5.5vw,4.6rem);line-height:1;margin:18px 0 20px}
+.amelie h2 em{color:var(--oro)}
+.amelie p{color:var(--gris);margin-bottom:28px;max-width:46ch}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.chip{border:1px solid var(--linea);background:var(--vidrio);color:var(--crema);padding:11px 18px;border-radius:999px;font-family:"Manrope",sans-serif;font-size:.88rem;cursor:pointer;transition:border-color .3s,background .3s}
+.chip:hover{border-color:var(--oro);background:rgba(212,180,122,.1)}
+.movil{border:1px solid var(--linea);border-radius:32px;padding:14px;background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.movil-cab{display:flex;align-items:center;gap:12px;padding:12px 12px 18px;border-bottom:1px solid var(--linea)}
+.movil-cab .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--oro2),var(--oro));color:var(--fondo);font-family:"Instrument Serif",serif;font-size:1.3rem}
+.movil-cab b{font-weight:500;display:block}
+.movil-cab small{color:#4ADE80;font-size:.75rem}
+.conv{padding:18px 6px 6px;display:grid;gap:10px}
+.msg{max-width:82%;padding:12px 16px;border-radius:18px;font-size:.9rem;line-height:1.5}
+.msg.cli{justify-self:end;background:var(--azul);border-bottom-right-radius:6px}
+.msg.bot{background:var(--crema);color:var(--fondo);border-bottom-left-radius:6px}
+.puntos{display:inline-flex;gap:5px;padding:14px 18px;background:var(--crema);border-radius:18px;border-bottom-left-radius:6px;width:max-content}
+.puntos span{width:7px;height:7px;border-radius:50%;background:#A6864A;animation:pt 1.2s infinite}
+.puntos span:nth-child(2){animation-delay:.2s}.puntos span:nth-child(3){animation-delay:.4s}
+@keyframes pt{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-4px)}}
+
+.visita{background:var(--fondo2)}
+.visita .wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dato{display:flex;justify-content:space-between;gap:16px;padding:20px 0;border-bottom:1px solid var(--linea)}
+.dato span:first-child{color:var(--gris)}
+.cita{border-radius:28px;padding:44px;min-height:440px;display:flex;align-items:flex-end;background:linear-gradient(0deg,rgba(6,11,22,.9) 15%,rgba(6,11,22,.2) 75%),url('salon.jpg') center/cover,var(--azul)}
+.cita p{font-family:"Instrument Serif",serif;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15;font-style:italic}
+
+footer{padding:80px 0 120px;text-align:center}
+.grande-marca{font-family:"Instrument Serif",serif;font-size:clamp(4rem,14vw,12rem);line-height:.9;letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1px rgba(212,180,122,.35)}
+.disenado{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-top:40px}
+.firma{font-family:"Instrument Serif",serif;font-style:italic;font-size:2.2rem;margin:6px 0 10px}
+footer p{color:var(--gris);font-size:.84rem}
+
+.rev{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.rev.ver{opacity:1;transform:none}
+
+@media (max-width:900px){
+  nav{display:none}
+  .hero .wrap,.amelie .wrap,.visita .wrap,.cols,.bento{grid-template-columns:1fr}
+  .caja.grande{grid-column:auto}
+  section{padding:80px 0}
+  .lanzador .txt{display:none}.lanzador{padding:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rev{opacity:1;transform:none}html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <div class="marca"><span class="mono">A</span> CAFÉ AROMA</div>
-    <nav aria-label="Principal">
-      <a href="#maison">La Maison</a>
-      <a href="#carta">La Carte</a>
-      <a href="#visita">Visítanos</a>
-    </nav>
+    <div class="barra">
+      <div class="marca">Café <span>Aroma</span></div>
+      <nav aria-label="Principal">
+        <a href="#maison">La Maison</a>
+        <a href="#carta">Carta</a>
+        <a href="#amelie">Amélie</a>
+        <a href="#visita">Visítanos</a>
+      </nav>
+      <button class="pill oro chica" type="button" data-pregunta="Quiero hacer un pedido para recoger">Pedir ahora</button>
+    </div>
   </div>
 </header>
 
 <main>
-  <section class="hero">
-    <div class="marco" aria-hidden="true">
-      <svg class="esq a" viewBox="0 0 38 38" fill="none" stroke="currentColor"><path d="M1 37V1h36"/><path d="M6 37V6h31"/><circle cx="12" cy="12" r="3"/></svg>
-      <svg class="esq b" viewBox="0 0 38 38" fill="none" stroke="currentColor"><path d="M1 37V1h36"/><path d="M6 37V6h31"/><circle cx="12" cy="12" r="3"/></svg>
-      <svg class="esq c" viewBox="0 0 38 38" fill="none" stroke="currentColor"><path d="M1 37V1h36"/><path d="M6 37V6h31"/><circle cx="12" cy="12" r="3"/></svg>
-      <svg class="esq d" viewBox="0 0 38 38" fill="none" stroke="currentColor"><path d="M1 37V1h36"/><path d="M6 37V6h31"/><circle cx="12" cy="12" r="3"/></svg>
-    </div>
-    <div class="contenido">
-      <span class="script">Bienvenue</span>
-      <h1 class="dorado">Café Aroma</h1>
-      <div class="sub">Maison de Café &amp; Pâtisserie Française</div>
-      <div class="orn" aria-hidden="true"><svg viewBox="0 0 46 14" fill="none" stroke="currentColor"><path d="M2 7h12M32 7h12"/><path d="M23 1l6 6-6 6-6-6z"/><circle cx="23" cy="7" r="1.5" fill="currentColor"/></svg></div>
-      <p>Café de especialidad, pâtisserie francesa hecha a mano cada mañana y un salón sereno para disfrutar sin prisa.</p>
-      <button class="btn" id="abrirChat" type="button">Consultar a nuestro asistente</button>
-      <div class="desde">DEPUIS 2026</div>
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="rev">
+        <span class="eti">Maison de Café &amp; Pâtisserie</span>
+        <h1 class="serif">Café <em>Aroma</em></h1>
+        <p>Pâtisserie francesa hecha cada mañana y café de especialidad. Pide en segundos con Amélie, nuestra anfitriona con inteligencia artificial.</p>
+        <div class="botones">
+          <button class="pill oro" type="button" data-pregunta="¡Bonjour! ¿Qué me recomiendas hoy?">Pregúntale a Amélie</button>
+          <a class="pill vid" href="#carta">Ver la carta</a>
+        </div>
+      </div>
+      <div class="tarjeta rev">
+        <div class="k">Sugerencia del día</div>
+        <h3>Tarte au Citron &amp; Café Latte</h3>
+        <p>Tarta de limón con merengue y un latte cremoso.</p>
+        <div class="fila">
+          <span class="precio">S/ 23</span>
+          <button class="pill vid chica" type="button" data-pregunta="Quiero la sugerencia del día">Lo quiero</button>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="maison" id="maison">
+  <div class="franja" aria-hidden="true">
+    <div class="pista">
+      <span>Croissant au Beurre</span><span>✦</span><span>Pain au Chocolat</span><span>✦</span><span>Éclair au Chocolat</span><span>✦</span><span>Macarons</span><span>✦</span><span>Tarte au Citron</span><span>✦</span><span>Mille-feuille</span><span>✦</span><span>Madeleines</span><span>✦</span>
+      <span>Croissant au Beurre</span><span>✦</span><span>Pain au Chocolat</span><span>✦</span><span>Éclair au Chocolat</span><span>✦</span><span>Macarons</span><span>✦</span><span>Tarte au Citron</span><span>✦</span><span>Mille-feuille</span><span>✦</span><span>Madeleines</span><span>✦</span>
+    </div>
+  </div>
+
+  <section id="maison">
     <div class="wrap">
-      <span class="script">La Maison</span>
-      <h2>El arte de la pâtisserie francesa</h2>
-      <p>Seleccionamos granos de altura y los preparamos con la paciencia que merecen. Nuestros pasteleros elaboran cada mañana las recetas clásicas de París: hojaldres, macarons y tartas con mantequilla de verdad.</p>
-      <div class="arcos">
-        <div class="arco"><div class="num">I</div><h3>Le Café</h3><p>Granos de altura tostados en pequeños lotes y preparados al momento.</p></div>
-        <div class="arco"><div class="num">II</div><h3>La Pâtisserie</h3><p>Croissants, macarons, éclairs y tartas elaborados cada mañana en casa.</p></div>
-        <div class="arco"><div class="num">III</div><h3>Le Salon</h3><p>Un espacio tranquilo y elegante para conversar, leer o trabajar.</p></div>
+      <div class="titulo rev">
+        <div><span class="eti">La Maison</span><h2>El arte de una <em>buena taza</em></h2></div>
+        <p>Granos de altura, mantequilla de verdad y recetas clásicas de París, preparadas sin prisa.</p>
+      </div>
+      <div class="bento">
+        <div class="caja grande foto1 rev"><span class="num">01 — LA PÂTISSERIE</span><div><h3>Hecho cada mañana, como en París.</h3><p>Croissants, éclairs, macarons y tartas que salen de nuestro obrador antes de abrir.</p></div></div>
+        <div class="caja foto3 rev"><span class="num">02 — LE CAFÉ</span><div><h3>De especialidad</h3><p>Granos de altura tostados en pequeños lotes.</p></div></div>
+        <div class="caja rev"><span class="num">03 — LE SALON</span><div><h3>Para quedarte</h3><p>Un espacio sereno para leer, trabajar o conversar.</p></div></div>
+        <div class="caja grande rev"><span class="num">04 — AMÉLIE</span><div><h3>Pide sin hacer fila.</h3><p>Nuestra anfitriona con IA toma tu pedido y te entrega un código para recogerlo listo.</p></div></div>
       </div>
     </div>
   </section>
 
   <section class="carta" id="carta">
     <div class="wrap">
-      <div class="titulo">
-        <span class="script">La Carte</span>
-        <h2 class="dorado">Nuestra carta</h2>
-        <div class="orn" aria-hidden="true"><svg viewBox="0 0 46 14" fill="none" stroke="currentColor"><path d="M2 7h12M32 7h12"/><path d="M23 1l6 6-6 6-6-6z"/><circle cx="23" cy="7" r="1.5" fill="currentColor"/></svg></div>
-        <p>Precios en soles</p>
+      <div class="titulo rev">
+        <div><span class="eti">La Carte</span><h2>Nuestra <em>carta</em></h2></div>
+        <p>Precios en soles. Pregúntale a Amélie por el maridaje ideal para tu café.</p>
       </div>
-      <div class="menu">
-        <div class="menu-in">
-          <div>
-            <h3>Les Cafés</h3>
-            <div class="plato"><span class="nom">Espresso<small>Espresso</small></span><i></i><span class="pre">6</span></div>
-            <div class="plato"><span class="nom">Café Américain<small>Americano</small></span><i></i><span class="pre">7</span></div>
-            <div class="plato"><span class="nom">Cappuccino<small>Capuccino</small></span><i></i><span class="pre">9</span></div>
-            <div class="plato"><span class="nom">Café Latte<small>Latte</small></span><i></i><span class="pre">10</span></div>
-            <div class="plato"><span class="nom">Chocolat Chaud<small>Chocolate caliente</small></span><i></i><span class="pre">11</span></div>
-            <div class="plato"><span class="nom">Café Frappé<small>Frappé</small></span><i></i><span class="pre">13</span></div>
-            <h3 class="otro">Le Salé</h3>
-            <div class="plato"><span class="nom">Croque-Monsieur<small>Sándwich gratinado de jamón y queso</small></span><i></i><span class="pre">16</span></div>
-          </div>
-          <div>
-            <h3>Les Pâtisseries</h3>
-            <div class="plato"><span class="nom">Croissant au Beurre<small>Croissant de mantequilla</small></span><i></i><span class="pre">6</span></div>
-            <div class="plato"><span class="nom">Pain au Chocolat<small>Hojaldre relleno de chocolate</small></span><i></i><span class="pre">7</span></div>
-            <div class="plato"><span class="nom">Madeleines<small>Bizcochitos de mantequilla (4 unid.)</small></span><i></i><span class="pre">9</span></div>
-            <div class="plato"><span class="nom">Éclair au Chocolat<small>Masa choux con crema de chocolate</small></span><i></i><span class="pre">10</span></div>
-            <div class="plato"><span class="nom">Macarons<small>Caja de 3 sabores surtidos</small></span><i></i><span class="pre">12</span></div>
-            <div class="plato"><span class="nom">Tarte au Citron<small>Tarta de limón con merengue</small></span><i></i><span class="pre">13</span></div>
-            <div class="plato"><span class="nom">Mille-feuille<small>Hojaldre con crema pastelera</small></span><i></i><span class="pre">14</span></div>
-          </div>
+      <div class="cols">
+        <div class="panel rev">
+          <h3>Les Cafés</h3>
+          <div class="plato"><span class="nom">Espresso<small>Espresso</small></span><span class="pre">S/ 6</span></div>
+          <div class="plato"><span class="nom">Café Américain<small>Americano</small></span><span class="pre">S/ 7</span></div>
+          <div class="plato"><span class="nom">Cappuccino<small>Capuccino</small></span><span class="pre">S/ 9</span></div>
+          <div class="plato"><span class="nom">Café Latte<small>Latte</small></span><span class="pre">S/ 10</span></div>
+          <div class="plato"><span class="nom">Chocolat Chaud<small>Chocolate caliente</small></span><span class="pre">S/ 11</span></div>
+          <div class="plato"><span class="nom">Café Frappé<small>Frappé</small></span><span class="pre">S/ 13</span></div>
+          <h3 class="otro">Le Salé</h3>
+          <div class="plato"><span class="nom">Croque-Monsieur<small>Sándwich gratinado de jamón y queso</small></span><span class="pre">S/ 16</span></div>
+        </div>
+        <div class="panel rev">
+          <h3>Les Pâtisseries</h3>
+          <div class="plato"><span class="nom">Croissant au Beurre<small>Croissant de mantequilla</small></span><span class="pre">S/ 6</span></div>
+          <div class="plato"><span class="nom">Pain au Chocolat<small>Hojaldre relleno de chocolate</small></span><span class="pre">S/ 7</span></div>
+          <div class="plato"><span class="nom">Madeleines<small>Bizcochitos de mantequilla (4 unid.)</small></span><span class="pre">S/ 9</span></div>
+          <div class="plato"><span class="nom">Éclair au Chocolat<small>Masa choux con crema de chocolate</small></span><span class="pre">S/ 10</span></div>
+          <div class="plato"><span class="nom">Macarons<small>Caja de 3 sabores surtidos</small></span><span class="pre">S/ 12</span></div>
+          <div class="plato"><span class="nom">Tarte au Citron<small>Tarta de limón con merengue</small></span><span class="pre">S/ 13</span></div>
+          <div class="plato"><span class="nom">Mille-feuille<small>Hojaldre con crema pastelera</small></span><span class="pre">S/ 14</span></div>
         </div>
       </div>
       <p class="nota">Leche vegetal disponible por S/ 2 adicionales.</p>
     </div>
   </section>
 
-  <section class="visita" id="visita">
+  <section class="amelie" id="amelie">
     <div class="wrap">
-      <div>
-        <span class="script">À bientôt</span>
-        <h2>Visítanos</h2>
-        <dl class="datos">
-          <dt>Dirección</dt><dd>Av. Principal 123</dd>
-          <dt>Lunes a sábado</dt><dd>7:00 a 21:00</dd>
-          <dt>Domingo</dt><dd>8:00 a 14:00</dd>
-          <dt>Pedidos</dt><dd>Desde nuestro asistente en línea</dd>
-        </dl>
+      <div class="rev">
+        <span class="eti">Asistente con IA</span>
+        <h2>Conoce a <em>Amélie</em></h2>
+        <p>Te recomienda qué pedir, responde sobre la carta y los horarios, y toma tu pedido para recoger con un código de confirmación. Prueba con un toque:</p>
+        <div class="chips">
+          <button class="chip" type="button" data-pregunta="¿Cuál es la sugerencia del día?">✨ Sugerencia del día</button>
+          <button class="chip" type="button" data-pregunta="¿Qué me recomiendas con un cappuccino?">☕ Maridaje para mi café</button>
+          <button class="chip" type="button" data-pregunta="Quiero hacer un pedido para recoger">🥐 Hacer un pedido</button>
+          <button class="chip" type="button" data-pregunta="¿Cuál es su horario de atención?">🕖 Horario</button>
+        </div>
+        <button class="pill oro" type="button" data-pregunta="">Abrir el chat</button>
       </div>
-      <div class="asistente">
-        <div class="asistente-in">
-          <div class="orn" aria-hidden="true"><svg viewBox="0 0 46 14" fill="none" stroke="currentColor"><path d="M2 7h12M32 7h12"/><path d="M23 1l6 6-6 6-6-6z"/><circle cx="23" cy="7" r="1.5" fill="currentColor"/></svg></div>
-          <h3>¿En qué podemos ayudarte?</h3>
-          <p>Nuestro asistente virtual te responde al instante y toma tu pedido. Puedes preguntarle, por ejemplo:</p>
-          <ul class="ejemplos">
-            <li>"¿Qué me recomiendas con un capuccino?"</li>
-            <li>"Quiero 2 éclairs y un latte para llevar"</li>
-            <li>"¿Abren el domingo?"</li>
-          </ul>
-          <button class="btn lleno" id="abrirChat2" type="button">Abrir el chat</button>
+      <div class="movil rev" aria-hidden="true">
+        <div class="movil-cab"><div class="av">A</div><div><b>Amélie</b><small>● En línea</small></div></div>
+        <div class="conv">
+          <div class="msg cli">¿Qué me recomiendas con un latte?</div>
+          <div class="msg bot">¡Magnifique! ☕ Nuestro Café Latte va perfecto con un Éclair au Chocolat. ¿Te gustaría pedirlo para recoger?</div>
+          <div class="msg cli">Sí, uno de cada uno 🙌</div>
+          <div class="puntos"><span></span><span></span><span></span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="visita" id="visita">
+    <div class="wrap">
+      <div class="rev">
+        <span class="eti">À bientôt</span>
+        <div class="titulo" style="margin:18px 0 20px"><h2 style="margin:0">Visítanos</h2></div>
+        <div class="dato"><span>Dirección</span><span>Av. Principal 123</span></div>
+        <div class="dato"><span>Lunes a sábado</span><span>7:00 – 21:00</span></div>
+        <div class="dato"><span>Domingo</span><span>8:00 – 14:00</span></div>
+        <div class="dato"><span>Pedidos</span><span>Con Amélie, en línea</span></div>
+      </div>
+      <div class="cita rev"><p>"Un buen café no se apura: se disfruta, como una conversación entre amigos."</p></div>
     </div>
   </section>
 </main>
 
 <footer>
-  <span class="mono">A</span>
-  <div class="disenado">DISEÑADO POR</div>
-  <div class="firma">Steffany Gutierrez</div>
-  <p>Proyecto académico - Landing page con chatbot creado en n8n</p>
+  <div class="wrap">
+    <div class="grande-marca">Café Aroma</div>
+    <div class="disenado">Diseñado por</div>
+    <div class="firma">Steffany Gutierrez</div>
+    <p>Proyecto académico de posgrado · Landing page con agente inteligente en n8n</p>
+  </div>
 </footer>
+
+<button class="lanzador" type="button" aria-label="Abrir chat con Amélie">
+  <span class="av">A</span>
+  <span class="txt">Pregúntale a Amélie<small>Responde al instante</small></span>
+</button>
 
 <script type="module">
   import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat@0.27.1/dist/chat.bundle.es.js';
@@ -266,24 +322,43 @@
     showWelcomeScreen: false,
     defaultLanguage: 'en',
     initialMessages: [
-      'Bonjour ✦ Bienvenue a Café Aroma.',
-      'Soy tu asistente. Puedo recomendarte algo de nuestra pâtisserie, contarte precios y horarios, o tomar tu pedido para recoger. ¿Qué se te antoja hoy?'
+      'Bonjour ✨ Soy Amélie, la anfitriona de Café Aroma.',
+      'Puedo recomendarte algo de nuestra pâtisserie, contarte precios y horarios, o tomar tu pedido para recoger. ¿Qué se te antoja hoy?'
     ],
-    i18n: {
-      en: {
-        title: 'Café Aroma',
-        subtitle: 'Maison de Café & Pâtisserie - Asistente virtual',
-        footer: '',
-        getStarted: 'Nueva conversación',
-        inputPlaceholder: 'Escribe tu consulta...',
-        closeButtonTooltip: 'Cerrar chat'
-      }
-    }
+    i18n: { en: {
+      title: 'Amélie',
+      subtitle: 'Anfitriona de Café Aroma · En línea',
+      footer: '',
+      getStarted: 'Nueva conversación',
+      inputPlaceholder: 'Escribe tu mensaje...',
+      closeButtonTooltip: 'Cerrar chat'
+    } }
   });
 
-  const abrir = () => document.querySelector('.chat-window-toggle')?.click();
-  document.getElementById('abrirChat').addEventListener('click', abrir);
-  document.getElementById('abrirChat2').addEventListener('click', abrir);
+  function chatAbierto(){
+    const v = document.querySelector('.chat-window');
+    return v && getComputedStyle(v).display !== 'none';
+  }
+  function alternar(){ document.querySelector('.chat-window-toggle')?.click(); }
+  function preguntar(texto){
+    if (!chatAbierto()) alternar();
+    if (!texto) return;
+    setTimeout(() => {
+      const caja = document.querySelector('.chat-inputs textarea');
+      if (!caja) return;
+      caja.value = texto;
+      caja.dispatchEvent(new Event('input', { bubbles: true }));
+      setTimeout(() => document.querySelector('.chat-input-send-button')?.click(), 150);
+    }, 700);
+  }
+  document.querySelector('.lanzador').addEventListener('click', alternar);
+  document.querySelectorAll('[data-pregunta]').forEach(b =>
+    b.addEventListener('click', () => preguntar(b.dataset.pregunta)));
+
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('ver'); obs.unobserve(e.target); }
+  }), { threshold: .12 });
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
